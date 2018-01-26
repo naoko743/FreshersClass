@@ -1,0 +1,31 @@
+﻿<form>
+  <div>
+    <h2>Welcome to Text Sharing {{currentUser.username}} !</h2>
+    <table>
+      <tr>
+        <th><h4>Search:</h4></th>
+        <th><input type="text" name="url" size="50"></th>
+        <th>
+          <button (click)="openUrl()" type="button" onclick="alert('Hello world!')">Open</button>
+        </th>
+      </tr>
+    </table>
+    <section>
+      <h4>Text:</h4>
+      <textarea name="content" rows="15" cols="70" maxlength="250">
+      </textarea>
+    </section>
+    <table>
+      <tr>
+        <th>
+          <button (click)="generateUrl()" type="button" onclick="alert('Hello world!')">Sharing</button>
+        </th>
+        <th><h4>Url:</h4></th>
+        <th><p> sadfasdfasdf </p></th>
+      </tr>
+    </table>
+
+    <button (click)="editText()" type="button" onclick="alert('Hello world!')">Edit</button>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+  </div>
+</form>
