@@ -1,12 +1,11 @@
 ﻿import {Component, OnInit} from '@angular/core';
-
-import {User} from '../_models/index';
 import {UserService} from '../_services/index';
 import {AlertService} from '../_services/alert.service';
+import {User} from '../_models/user';
 
 
 @Component( {
-  moduleId: module.id,
+  selector: 'app-home',
   templateUrl: 'home.component.html'
 } )
 
@@ -26,15 +25,15 @@ export class HomeComponent implements OnInit {
   }
 
   generateUrl() {
-    //this.operationService.generateUrl();
+    // this.operationService.generateUrl();
   }
 
   editText() {
-    //this.operationService.generateUrl();
+    // this.operationService.generateUrl();
   }
 
   openUrl() {
-    //this.operationService.generateUrl();
+    // this.operationService.generateUrl();
   }
 
 }

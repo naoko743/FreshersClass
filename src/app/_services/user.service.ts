@@ -12,7 +12,7 @@ export class UserService {
 
     }
     getAll() {
-        return this.http.get<User[]>('http://localhost:8080/user/findAll');
+       // return this.http.get<User[]>('http://localhost:8080/user/findAll');
     }
 
     getById(id: number) {
