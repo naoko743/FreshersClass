@@ -4,21 +4,42 @@ import 'rxjs/add/operator/catch';
 import {Fileversion} from '../_models/Fileversion';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Version} from '../_models/Version';
 
 @Injectable()
 export class OperationService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
-  fileUrl = 'http://localhost:8080/file/create';
+  createUrl = 'http://localhost:8080/file/create';
+  searchUrl = 'http://localhost:8080/file/search';
 
-  generateUrl(fileversion: Fileversion): Observable<number> {
+  createFile(fileversion: Fileversion): Observable<number> {
 
     const cpHeaders = new HttpHeaders( {'Content-Type': 'application/json'} );
 
-    return this.http.post<any>(this.fileUrl, JSON.stringify(fileversion), {headers: cpHeaders, withCredentials: false})
-      .map( sucess => sucess.status )
-      .catch( this.handleError );
+    return this.http.post<any>(this.createUrl, JSON.stringify(fileversion), {headers: cpHeaders, withCredentials: false})
+      .map(version => {
+        if (version) {
+          // store user details and in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentVersion', JSON.stringify(version));
+        }
+
+        return version;
+      });
+  }
+
+  searchFile(url: string): Observable<number> {
+    const cpHeaders = new HttpHeaders( {'Content-Type': 'application/json'} );
+
+    return this.http.post<any>(this.searchUrl, JSON.stringify(url), {headers: cpHeaders, withCredentials: false})
+      .map(version => {
+        if (version) {
+          // store user details and in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentVersion', JSON.stringify(version));
+        }
+
+        return version;
+      });
   }
 
 

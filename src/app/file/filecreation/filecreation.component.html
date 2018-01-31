@@ -1,0 +1,25 @@
+
+<script>
+  function reload(){
+    location.href=location.href
+  }
+  setInterval('reload()',20000)
+</script>
+<div class="col-md-6 col-md-offset-3">
+  <form>
+    <h4>Text:</h4>
+    <textarea name="content" [(ngModel)]="model.content" rows="15" cols="70" maxlength="700">
+      </textarea>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+      <span >
+        <button class="btn btn-default" (click)="create(); reload()" type="button">Create! </button>
+      </span>
+          <h4>URL</h4> <input name="url" size="68" value="{{currentVersion.url}}" type="text">
+        </div>
+      </div>
+    </div>
+    <p><a [routerLink]="['']"><h5>Back</h5></a></p>
+  </form>
+</div>

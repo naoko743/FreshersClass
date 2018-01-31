@@ -2,6 +2,7 @@
 import {UserService} from '../_services/index';
 import {AlertService} from '../_services/alert.service';
 import {User} from '../_models/user';
+import {Version} from "../_models/Version";
 
 
 @Component( {
@@ -15,25 +16,12 @@ export class HomeComponent implements OnInit {
   model: any = {};
 
   constructor(private userService: UserService,
-              //  private operationService: OperationService,
               private alertService: AlertService) {
     this.currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
   }
 
   ngOnInit() {
 
-  }
-
-  generateUrl() {
-    // this.operationService.generateUrl();
-  }
-
-  editText() {
-    // this.operationService.generateUrl();
-  }
-
-  openUrl() {
-    // this.operationService.generateUrl();
   }
 
 }

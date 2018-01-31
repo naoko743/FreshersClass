@@ -1,10 +1,9 @@
 <form>
-
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Paste your Url...">
+      <input type="text" name="url" [(ngModel)]="model.url" class="form-control" placeholder="Write hier your Url...">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search!</button>
+        <button class="btn btn-default" (click)="search()" type="button">Search!</button>
       </span>
     </div>
     <textarea name="content" rows="15" cols="70" maxlength="250"></textarea>

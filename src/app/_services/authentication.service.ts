@@ -8,17 +8,16 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
       let body =  { username: username, password: password };
-      let header = new HttpHeaders({'Content-type':'application/json'});
+      let header = new HttpHeaders({'Content-type': 'application/json'});
 
-        return this.http.post<any>('http://localhost:8080/auth/login', JSON.stringify(body), {headers: header, withCredentials: true})
+        return this.http.post<string>('http://localhost:8080/auth/login', JSON.stringify(body), {headers: header, withCredentials: true})
             .map(user => {
-                // login successful if there's a jwt token in the response
-                if (user && user.token) {
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                if (user) {
+                    // store user details and in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
 
-                return user;
+                return username;
             });
     }
 
