@@ -31,10 +31,10 @@ export class OperationService {
   searchFile(url: string): Observable<number> {
     const cpHeaders = new HttpHeaders( {'Content-Type': 'application/json'} );
 
-    return this.http.post<any>(this.searchUrl, JSON.stringify(url), {headers: cpHeaders, withCredentials: false})
+    return this.http.post<any>(this.searchUrl, url, {headers: cpHeaders, withCredentials: false})
       .map(version => {
         if (version) {
-          // store user details and in local storage to keep user logged in between page refreshes
+          console.log(version);
           localStorage.setItem('currentVersion', JSON.stringify(version));
         }
 

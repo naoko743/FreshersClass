@@ -15,7 +15,7 @@ export class FilesearchComponent implements OnInit {
   constructor(
     private operationService: OperationService
   ) {
-    this.currentVersion = JSON.parse( localStorage.getItem( 'currentVersion' ) );
+
   }
 
   ngOnInit() {
@@ -25,6 +25,7 @@ export class FilesearchComponent implements OnInit {
     this.operationService.searchFile(this.model.url)
       .subscribe(successCode => {
           this.statusCode = successCode;
+          this.currentVersion = JSON.parse( localStorage.getItem( 'currentVersion' ) );
         },
         errorCode => this.statusCode = errorCode);
   }
