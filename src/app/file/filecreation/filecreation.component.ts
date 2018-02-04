@@ -3,6 +3,8 @@ import {Fileversion} from '../../_models/Fileversion';
 import {OperationService} from '../../_services/operation.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Version} from "../../_models/Version";
+import {AlertService} from "../../_services/alert.service";
+import {User} from "../../_models/user";
 
 @Component({
   selector: 'app-filecreation',
@@ -11,44 +13,29 @@ import {Version} from "../../_models/Version";
 })
 export class FilecreationComponent implements OnInit {
   currentVersion: Version;
+  currentUser: User;
   model: any = {};
-  processValidation = false;
   statusCode: number;
-  requestProcessing = false;
-
-  // Create Form
-  fileForm = new FormControl({
-    content: new FormControl('', Validators.nullValidator)
-  })
 
   constructor(
-    private operationService: OperationService
+    private operationService: OperationService,
+    private alertService: AlertService
   ) {
-
+   // this.currentUser = JSON.parse( localStorage.getItem( 'currentUser' ) );
   }
 
   ngOnInit() {
   }
 
   create() {
-    this.processValidation = true;
-    if (this.fileForm.invalid) {
-      return;
-    }
-    this.preProcessConfigurations();
     let fileversion = new Fileversion(this.model.content);
     this.operationService.createFile(fileversion)
       .subscribe(successCode => {
-              this.statusCode = successCode;
+          this.statusCode = successCode;
           this.currentVersion = JSON.parse( localStorage.getItem( 'currentVersion' ) );
+
       },
         errorCode => this.statusCode = errorCode);
-  }
-
-
-  preProcessConfigurations() {
-    this.statusCode = null;
-    this.requestProcessing = true;
   }
 
 }

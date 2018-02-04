@@ -12,7 +12,6 @@ import {Version} from "../_models/Version";
 
 export class HomeComponent implements OnInit {
   currentUser: User;
-  loading = false;
   model: any = {};
 
   constructor(private userService: UserService,

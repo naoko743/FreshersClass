@@ -1,20 +1,22 @@
 export class Version {
 
   private url: string;
-  private content: string;
+  private _content: string;
 
-  constructor( url: string) {
-    this.url = url;
+  constructor( content: string) {
+    this.content = content;
   }
 
+
+  set content(value: string) {
+    this._content = value;
+  }
 
   public getContent(): string {
     return this.content;
   }
 
-  public setContent(value: string) {
-    this.content = value;
-  }
+
   public getUrl(): string {
     return this.url;
   }

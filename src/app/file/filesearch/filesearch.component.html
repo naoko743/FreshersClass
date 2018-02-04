@@ -1,12 +1,17 @@
 <form>
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" name="url" [(ngModel)]="model.url" class="form-control" placeholder="Write hier your Url...">
+      <input type="text" name="url" [(ngModel)]="model.url" class="form-control" placeholder="Write here your Url...">
       <span class="input-group-btn">
         <button class="btn btn-default" (click)="search()" type="button">Search!</button>
       </span>
     </div>
-    <textarea name="content" rows="15" cols="70" maxlength="250" readonly>{{currentVersion?.content}}</textarea>
+    <textarea ref-textarea name="content" [(ngModel)] = "currentVersion.content" rows="15" cols="70" maxlength="700" ></textarea>
+    <button class="btn btn-default" (click)="edit(textarea.value)" type="button">Edit</button>
+    <span class="input-group-btn">
+
+    </span>
+    <h5>New URL</h5> <input name="url" size="68" value="{{currentVersion.url}}" type="text">
     <p><a [routerLink]="['']"><h5>Back</h5></a></p>
   </div>
 </form>
