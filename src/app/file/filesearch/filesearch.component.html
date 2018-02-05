@@ -6,7 +6,7 @@
         <button class="btn btn-default" (click)="search()" type="button">Search!</button>
       </span>
     </div>
-    <textarea ref-textarea name="content" [(ngModel)] = "currentVersion.content" rows="15" cols="70" maxlength="700" ></textarea>
+    <textarea ref-textarea name="content"  rows="15" cols="70" maxlength="700" >{{currentVersion.content}}</textarea>
     <button class="btn btn-default" (click)="edit(textarea.value)" type="button">Edit</button>
     <span class="input-group-btn">
 
