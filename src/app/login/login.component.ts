@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private cookieService: CookieService) { }
 
         ngOnInit() {
         // reset login status
@@ -31,11 +33,13 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
+                  console.log(data);
+                  this.cookieService.put('currentUser', data);
                   this.router.navigate([this.returnUrl]);
                 },
                 error => {
                   console.log(error);
-                    this.alertService.error("Username or Password incorrect!");
+                    this.alertService.error('Username or Password incorrect!');
                     this.loading = false;
                 });
     }

@@ -51,7 +51,7 @@ export class OperationService {
 
     return this.http.post<any>( this.editUrl, JSON.stringify( findVersion ), {
       headers: cpHeaders,
-      withCredentials: false
+      withCredentials: true
     } )
       .map( version => {
         if (version) {

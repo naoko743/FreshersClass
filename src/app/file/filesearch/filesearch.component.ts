@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OperationService} from '../../_services/operation.service';
 import {Version} from '../../_models/Version';
-import {AlertService} from '../../_services/alert.service';
-import {Fileversion} from '../../_models/Fileversion';
 
 @Component({
   selector: 'app-filesearch',

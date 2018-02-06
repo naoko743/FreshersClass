@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/index';
 import { FilecreationComponent } from './file/filecreation/filecreation.component';
 import { FilesearchComponent } from './file/filesearch/filesearch.component';
 import {OperationService} from './_services/operation.service';
+import {CookieService} from 'angular2-cookie/services/cookies.service';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {OperationService} from './_services/operation.service';
     AlertService,
     AuthenticationService,
     UserService,
-    OperationService
+    OperationService,
+    CookieService
 
   ],
   bootstrap: [AppComponent]
